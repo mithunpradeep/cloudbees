@@ -21,17 +21,16 @@ type Props = {}
 const UsersDetails = (props: Props) => {
     const {username} = useParams();
     const [userDetails, setUserDetails] = useState<any>(false)
-    const [value, setValue] = useState('0');
+    const [value, setValue] = useState('1');
 
 
     useEffect(() => {
         fetch(`https://api.github.com/users/${username}`).then((res) => res.json()).then(res => setUserDetails(res)).catch(() => console.log("Error getting users details"))
-        setValue('0')
+        setValue('1')
     }, [username])
 
 
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-        console.log(newValue)
         setValue(newValue);
     };
 
@@ -77,9 +76,9 @@ const UsersDetails = (props: Props) => {
                                         </Box>
                                         <TabPanel value="1"><RepoList
                                             username={userDetails.login}></RepoList></TabPanel>
-                                        <TabPanel value="2"><UserList user={userDetails.login}
+                                        <TabPanel value="2"><UserList user={userDetails.login} details={true}
                                                                       followers={true}></UserList></TabPanel>
-                                        <TabPanel value="3"><UserList user={userDetails.login}
+                                        <TabPanel value="3"><UserList user={userDetails.login} details={true}
                                                                       followers={false}></UserList></TabPanel>
                                     </TabContext>
                                 </Box>

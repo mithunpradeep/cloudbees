@@ -19,11 +19,11 @@ const RepoList = ({username}: Props) => {
             <div className="flex flex-row m-auto flex-wrap">
                 {!!repo.length && repo.map((repo: any, index: number) => (
                     <Card key={repo.id} className="w-[47%] flex flex-col justify-between h-36 m-2 p-2 box-border">
-                        {repo.name && <p className="pt-3 text-xl"><BookIcon/> {repo.name}
+                        {repo.name && <div className="pt-3 text-xl"><BookIcon/> {repo.name}
                             <Chip variant="outlined" className="ml-3"
-                                  label={repo.visibility}/></p>}
-                        {repo.language && <p className="pt-3 font-extralight"><Chip
-                            label={repo.language}/></p>}
+                                  label={repo.visibility}/></div>}
+                        {repo.language && <div className="pt-3 font-extralight"><Chip
+                            label={repo.language}/></div>}
                     </Card>
                 ))}
             </div>
